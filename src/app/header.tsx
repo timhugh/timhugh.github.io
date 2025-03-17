@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface SocialLink {
+	label: string;
 	href: string;
 	icon: React.ReactNode;
 }
@@ -17,15 +18,31 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
 	{ href: "/", label: "About" },
-	// { href: "/blog", label: "Blog" },
-	// { href: "/photos", label: "Photos" },
+	{ href: "/blog", label: "Blog" },
+	{ href: "/photos", label: "Photos" },
 ];
 
 const socialLinks: SocialLink[] = [
-	{ href: "//github.com/timhugh", icon: <GitHub size={16} /> },
-	{ href: "//linkedin.com/in/timheuett", icon: <Linkedin size={16} /> },
-	{ href: "//instagram.com/timhugh", icon: <Instagram size={16} /> },
-	{ href: "mailto:info@timheuett.com", icon: <Mail size={16} /> },
+	{
+		label: "GitHub Profile",
+		href: "//github.com/timhugh",
+		icon: <GitHub aria-label="GitHub Icon" size={16} />,
+	},
+	{
+		label: "LinkedIn Profile",
+		href: "//linkedin.com/in/timheuett",
+		icon: <Linkedin aria-label="LinkedIn Icon" size={16} />,
+	},
+	{
+		label: "Instagram Profile",
+		href: "//instagram.com/timhugh",
+		icon: <Instagram aria-label="Instagram Icon" size={16} />,
+	},
+	{
+		label: "Email",
+		href: "mailto:info@timheuett.com",
+		icon: <Mail aria-label="Email Icon" size={16} />,
+	},
 ];
 
 export default function Header() {
@@ -67,9 +84,9 @@ function buildNavLinks(
 }
 
 function buildSocialLinks(socialLinks: SocialLink[]): React.ReactNode {
-	return socialLinks.map(({ href, icon }, index) => (
+	return socialLinks.map(({ label, href, icon }, index) => (
 		<li key={index}>
-			<Link href={href}>
+			<Link href={href} aria-label={label}>
 				<div className="text-background dark:text-foreground bg-foreground dark:bg-background hover:bg-primary p-1.5 rounded-full">
 					{icon}
 				</div>
