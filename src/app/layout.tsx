@@ -1,13 +1,31 @@
-import { Lato } from "next/font/google";
-import type { Viewport } from "next";
-import "tailwindcss/tailwind.css";
+import { Courier_Prime, Lato } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import "./global.css";
+import Header from "./header";
 
 export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1.0,
 };
 
-const lato = Lato({ weight: ["100", "300"], subsets: ["latin"] });
+export const metadata: Metadata = {
+	title: {
+		default: "Tim Heuett",
+		template: "%s | Tim Heuett",
+	},
+};
+
+const lato = Lato({
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-serif",
+});
+
+const courier = Courier_Prime({
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-serif",
+});
 
 export default function RootLayout({
 	children,
@@ -16,7 +34,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${lato.className} text-foreground`}>
+			<body className={`${lato.variable} ${courier.variable}`}>
+				<Header />
 				{children}
 			</body>
 		</html>
