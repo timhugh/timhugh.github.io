@@ -21,7 +21,7 @@ const navLinks: NavLink[] = [
 	// { href: "/photos", label: "Photos" },
 ];
 
-const socials: SocialLink[] = [
+const socialLinks: SocialLink[] = [
 	{ href: "//github.com/timhugh", icon: <GitHub size={16} /> },
 	{ href: "//linkedin.com/in/timheuett", icon: <Linkedin size={16} /> },
 	{ href: "//instagram.com/timhugh", icon: <Instagram size={16} /> },
@@ -43,16 +43,7 @@ export default function Header() {
 					{buildNavLinks(currentPath, navLinks)}
 				</div>
 				<ul className="list-none flex flex-row items-center gap-2 md:mr-1">
-					{socials.map(({ href, icon }, index) => (
-						<li
-							key={index}
-							className="text-background bg-foreground hover:bg-primary p-1.5 rounded-full"
-						>
-							<a href={href} className="hover:text-background">
-								{icon}
-							</a>
-						</li>
-					))}
+					{buildSocialLinks(socialLinks)}
 				</ul>
 			</div>
 		</header>
@@ -73,6 +64,18 @@ function buildNavLinks(
 			</ul>
 		</nav>
 	);
+}
+
+function buildSocialLinks(socialLinks: SocialLink[]): React.ReactNode {
+	return socialLinks.map(({ href, icon }, index) => (
+		<li key={index}>
+			<Link href={href}>
+				<div className="text-background dark:text-foreground bg-foreground dark:bg-background hover:bg-primary p-1.5 rounded-full">
+					{icon}
+				</div>
+			</Link>
+		</li>
+	));
 }
 
 function buildNavLink(
