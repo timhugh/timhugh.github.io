@@ -27,10 +27,10 @@
 	}
 
 	body {
-		@apply h-screen;
+		@apply flex flex-col h-dvh;
 	}
 
 	main {
-		@apply container mx-auto min-h-96 mt-10 flex flex-col justify-center items-center;
+		@apply container mx-auto flex-1 mt-10 flex flex-col justify-center items-center;
 	}
 }
