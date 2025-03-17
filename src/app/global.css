@@ -31,6 +31,6 @@
 	}
 
 	main {
-		@apply container mx-auto flex-1 mt-10 flex flex-col justify-center items-center;
+		@apply container mx-auto md:flex-1 mt-10 flex flex-col justify-center items-center;
 	}
 }
