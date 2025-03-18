@@ -6,6 +6,7 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 const nextConfig: NextConfig = {
 	output: "export",
 	pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+	reactStrictMode: true,
 };
 
 const withMDX = createMDX({
@@ -18,4 +19,5 @@ const withMDX = createMDX({
 	},
 });
 
-export default withMDX(nextConfig);
+const completeConfig = withMDX(nextConfig);
+export default completeConfig;
