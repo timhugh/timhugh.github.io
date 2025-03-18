@@ -2,16 +2,16 @@
 
 import React, { AnchorHTMLAttributes } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function BackLink(
 	props: AnchorHTMLAttributes<HTMLAnchorElement>,
 ): JSX.Element {
-	const onClick = () => {
-		window.history.back();
-	};
+	const searchParams = useSearchParams();
+	const backPath = searchParams.get("back");
 
 	return (
-		<Link onClick={onClick} {...props} href="#">
+		<Link {...props} href={backPath || "/"}>
 			{props.children}
 		</Link>
 	);
