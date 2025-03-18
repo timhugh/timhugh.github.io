@@ -13,6 +13,8 @@
 		"@mdx-js/react": "^3.1.0",
 		"@next/mdx": "^15.2.2",
 		"@types/mdx": "^2.0.13",
+		"gray-matter": "^4.0.3",
+		"javascript-time-ago": "^2.5.11",
 		"next": "^15.0.3",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",

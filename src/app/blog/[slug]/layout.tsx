@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		<main>
 			<div className="w-full text-left max-w-6xl">
 				<ArrowLeft aria-label="Back arrow" className="inline h-3" />
-				<BackLink>Back to list</BackLink>
+				<BackLink>Back</BackLink>
 			</div>
 			<article>{children}</article>
 		</main>
