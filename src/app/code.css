@@ -1,0 +1,35 @@
+.hljs {
+	@apply block px-6 py-4 mb-4 rounded-xl bg-code_background_light dark:bg-code_background_dark text-sm;
+
+	.hljs-meta {
+		@apply text-code_orange_light dark:text-code_orange_dark;
+	}
+
+	.hljs-type {
+		@apply text-code_blue_light dark:text-code_blue_dark;
+	}
+
+	.hljs-title {
+		@apply text-code_yellow_light dark:text-code_yellow_dark;
+	}
+
+	.hljs-params {
+		@apply text-code_neutral_light dark:text-code_neutral_dark;
+	}
+
+	.hljs-built_in {
+		@apply text-code_neutral_light dark:text-code_neutral_dark;
+	}
+
+	.hljs-string {
+		@apply text-code_green_light dark:text-code_green_dark;
+	}
+
+	.hljs-keyword {
+		@apply text-code_orange_light dark:text-code_orange_dark;
+	}
+
+	.hljs-number {
+		@apply text-code_purple_light dark:text-code_purple_dark;
+	}
+}

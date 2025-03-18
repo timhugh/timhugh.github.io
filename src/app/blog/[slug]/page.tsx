@@ -1,21 +1,20 @@
 import React from "react";
 import { getPostsMetadata } from "@/posts";
-import TimeStamp from "@/components/TimeStamp";
+import BlogPost from "@/components/BlogPost";
 
-interface BlogPostProps {
+interface BlogPostLoaderProps {
 	params: Promise<{ slug: string }>;
 }
 
-export default async function BlogPost({ params }: BlogPostProps) {
+export default async function BlogPostLoader({ params }: BlogPostLoaderProps) {
 	const { slug } = await params;
 	const Post = await import(`@/posts/${slug}.mdx`);
 	const date = new Date(Date.parse(Post.frontmatter.date));
+
 	return (
-		<article>
-			<h1>{Post.frontmatter.title}</h1>
-			<TimeStamp date={date} />
+		<BlogPost title={Post.frontmatter.title} date={date}>
 			<Post.default />
-		</article>
+		</BlogPost>
 	);
 }
 

@@ -10,9 +10,23 @@ Here's a code block:
 ```c++
 #include <iostream>
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+template <typename T>
+void print(T value) {
+    std::cout << value << std::endl;
+}
+
+int main(int argc, char* argv[]) {
+	const std::string message = "Hello, Blog!";
+    print(message);
     return 0;
+}
+```
+
+Here's some javascript too:
+
+```javascript
+function sayHello() {
+	console.log("Hello, Blog!");
 }
 ```
 
