@@ -97,8 +97,13 @@ function buildSocialLinks(socialLinks: SocialLink[]): JSX.Element {
 		<React.Fragment>
 			{socialLinks.map(({ label, href, icon }, index) => (
 				<li key={index}>
-					<Link href={href} target="_blank" aria-label={label}>
-						<div className="text-background dark:text-foreground bg-foreground dark:bg-background hover:bg-primary p-1.5 rounded-full">
+					<Link
+						href={href}
+						target="_blank"
+						aria-label={label}
+						className="no-style"
+					>
+						<div className="text-background_light dark:text-background_dark bg-foreground_light dark:bg-foreground_dark hover:bg-primary hover:text-background_light dark:hover:text-background_dark p-1.5 rounded-full">
 							{icon}
 						</div>
 					</Link>
