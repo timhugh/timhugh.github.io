@@ -13,7 +13,11 @@ export default function TimeStamp({ date, ...props }: TimeStampProps) {
 	const timeAgo = new TimeAgo("en-US");
 	const relativeTime = timeAgo.format(date);
 	return (
-		<time dateTime={date.toISOString()} {...props}>
+		<time
+			dateTime={date.toISOString()}
+			aria-description={`Published ${date.toLocaleString()}`}
+			{...props}
+		>
 			{relativeTime}
 		</time>
 	);

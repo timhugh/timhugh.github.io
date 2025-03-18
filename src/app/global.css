@@ -9,7 +9,7 @@
 	 * Font/text styling
 	 */
 	body {
-		@apply bg-background dark:bg-foreground text-foreground dark:text-background;
+		@apply bg-background_light dark:bg-background_dark text-foreground_light dark:text-foreground_dark;
 	}
 
 	main {
@@ -17,7 +17,7 @@
 	}
 
 	article {
-		@apply font-light leading-10 text-left max-w-6xl;
+		@apply font-light leading-8 text-left max-w-4xl;
 	}
 
 	h1,

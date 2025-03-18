@@ -3,7 +3,11 @@ title: Blog post title
 date: 2025-03-17T18:00:00-07:00
 ---
 
-Some content
+I need to fill this in with some longer form content to get an idea of what it looks like. This stylesheet is getting close to being done (maybe), but there are still some text spacing things, etc. I also haven't done anything with mdx-components yet, and I suspect that will come up eventually.
+
+It's bothering me that hljs parses code on the frontend. I really feel like I should be able to get something set up to parse it on build so it's just part of the static output.
+
+That's enough inane stream of consciousness filler content for now! I hope you didn't read this hoping it was going to be something interesting 😅
 
 Here's a code block:
 
@@ -30,6 +34,29 @@ function sayHello() {
 }
 ```
 
+Here's some css (I don't have that parser set up, so idk what hljs is going to do with it):
+
+```css
+.some-class {
+	@apply some-other-class;
+
+	color: red;
+}
+```
+
 Here's an image:
 
 ![Alt text](/test/screenshot.png)
+
+I forgot to test some more formatting stuff in the paragraphs like _italicized text_ and **bold text** and ~~strikethrough text~~ and _**bold italicized text**_
+
+While I'm testing this, let's make a running todo list:
+
+- [x] Code syntax highlighting
+- [x] Constrain articles to a max width
+- [ ] Finalize paragraph styling
+    - [ ] Looks like strikethrough text isn't coming through
+- [ ] Style lists like this one
+- [ ] Code overflows code blocks on small screen sizes. Fix that
+- [ ] It looks like we're not _exactly_ parsing markdown checklists, maybe we need to find a github-flavor parser
+- [ ] Delete all of this fake content and publish the first real post

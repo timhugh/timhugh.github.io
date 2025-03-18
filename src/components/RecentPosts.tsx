@@ -14,12 +14,15 @@ export default async function RecentPosts(
 			<ul>
 				{posts.map((post) => (
 					<li key={post.slug}>
-						<ForwardLink href={`/blog/${post.slug}`}>
+						<ForwardLink
+							href={`/blog/${post.slug}`}
+							className="font-serif text-lg"
+						>
 							{post.title}
 						</ForwardLink>
 						<TimeStamp
 							date={post.date}
-							className="text-gray-500 pl-4"
+							className="text-foreground_dim_light dark:text-foreground_dim_dark pl-4 text-sm"
 						/>
 					</li>
 				))}

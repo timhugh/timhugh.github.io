@@ -14,9 +14,15 @@ export default {
 		},
 		extend: {
 			colors: {
-				background: "#fff",
-				foreground: "#333",
 				primary: "#84c66f",
+
+				background_light: "#ffffff",
+				foreground_light: "#333333",
+				foreground_dim_light: "#999999",
+
+				background_dark: "#111111",
+				foreground_dark: "#c9c9c9",
+				foreground_dim_dark: "#999999",
 
 				code_background_light: "#f0f0f0",
 				code_red_light: "#e45649",
@@ -27,7 +33,7 @@ export default {
 				code_purple_light: "#a626a4",
 				code_neutral_light: "#383a42",
 
-				code_background_dark: "#222222",
+				code_background_dark: "#1d1d1d",
 				code_red_dark: "#f87171",
 				code_orange_dark: "#f59e0b",
 				code_yellow_dark: "#fbbf24",
