@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
 				<ArrowLeft aria-label="Back arrow" className="inline h-3" />
 				<BackLink>Back</BackLink>
 			</div>
-			<article>{children}</article>
+			{children}
 		</main>
 	);
 }
