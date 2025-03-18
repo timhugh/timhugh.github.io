@@ -22,7 +22,25 @@
 			@apply mb-8;
 		}
 		code {
-			@apply mb-10;
+			@apply mb-10 text-wrap;
+		}
+		ul {
+			@apply ml-4 mb-8 mt-0 list-disc;
+			li > span {
+				@apply pl-4;
+			}
+		}
+		ul.contains-task-list {
+			@apply ml-4 mb-8 mt-0 list-none;
+			li > span {
+				@apply pl-4;
+			}
+		}
+		ol {
+			@apply ml-7 mb-8 mt-0 list-decimal;
+			li > span {
+				@apply pl-2;
+			}
 		}
 	}
 
@@ -35,7 +53,9 @@
 		@apply font-bold font-sans lowercase;
 	}
 
-	p {
+	p,
+	ul,
+	ol {
 		@apply font-normal font-serif;
 	}
 
@@ -64,6 +84,6 @@
 	}
 
 	p {
-		@apply pb-4;
+		@apply mb-4;
 	}
 }
