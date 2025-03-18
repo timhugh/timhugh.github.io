@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	title: "recent posts",
 };
 
-export default async function PostPage(): Promise<React.ReactNode> {
+export default async function PostPage(): Promise<JSX.Element> {
 	return (
 		<main>
 			<RecentPosts />

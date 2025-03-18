@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
 	const date = new Date().getFullYear();
 	return (
 		<footer className="sticky bottom-0 font-serif font-light text-right">

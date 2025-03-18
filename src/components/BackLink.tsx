@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function BackLink(
 	props: AnchorHTMLAttributes<HTMLAnchorElement>,
-): React.ReactNode {
+): JSX.Element {
 	const onClick = () => {
 		window.history.back();
 	};

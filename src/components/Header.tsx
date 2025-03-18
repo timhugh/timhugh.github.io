@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 interface SocialLink {
 	label: string;
 	href: string;
-	icon: React.ReactNode;
+	icon: JSX.Element;
 }
 
 interface NavLink {
@@ -57,7 +57,7 @@ const socialLinks: SocialLink[] = [
 	},
 ];
 
-export default function Header(): React.ReactNode {
+export default function Header(): JSX.Element {
 	const currentPath = usePathname();
 
 	return (
@@ -79,12 +79,9 @@ export default function Header(): React.ReactNode {
 	);
 }
 
-function buildNavLinks(
-	currentPath: string,
-	navLinks: NavLink[],
-): React.ReactNode {
+function buildNavLinks(currentPath: string, navLinks: NavLink[]): JSX.Element {
 	if (navLinks.length <= 1) {
-		return null;
+		return <React.Fragment />;
 	}
 	return (
 		<nav className="text-2xl">
@@ -95,22 +92,26 @@ function buildNavLinks(
 	);
 }
 
-function buildSocialLinks(socialLinks: SocialLink[]): React.ReactNode {
-	return socialLinks.map(({ label, href, icon }, index) => (
-		<li key={index}>
-			<Link href={href} target="_blank" aria-label={label}>
-				<div className="text-background dark:text-foreground bg-foreground dark:bg-background hover:bg-primary p-1.5 rounded-full">
-					{icon}
-				</div>
-			</Link>
-		</li>
-	));
+function buildSocialLinks(socialLinks: SocialLink[]): JSX.Element {
+	return (
+		<React.Fragment>
+			{socialLinks.map(({ label, href, icon }, index) => (
+				<li key={index}>
+					<Link href={href} target="_blank" aria-label={label}>
+						<div className="text-background dark:text-foreground bg-foreground dark:bg-background hover:bg-primary p-1.5 rounded-full">
+							{icon}
+						</div>
+					</Link>
+				</li>
+			))}
+		</React.Fragment>
+	);
 }
 
 function buildNavLink(
 	currentPath: string,
 	{ href, label }: NavLink,
-): React.ReactNode {
+): JSX.Element {
 	return currentPath === href ? (
 		// pb-1 to match the inactive nav links' border padding
 		<span key={href} className="text-gray-500 lowercase pb-1">

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default async function RecentPosts(
 	props: React.ComponentProps<"div">,
-): Promise<React.ReactNode> {
+): Promise<JSX.Element> {
 	const posts: PostMetadata[] = await getPostsMetadata();
 
 	return (

@@ -33,8 +33,8 @@ const courier = Courier_Prime({
 export default function RootLayout({
 	children,
 }: Readonly<{
-	children: React.ReactNode;
-}>): React.ReactNode {
+	children: JSX.Element;
+}>): JSX.Element {
 	return (
 		<html lang="en">
 			<body className={`${lato.variable} ${courier.variable}`}>
