@@ -18,6 +18,12 @@
 
 	article {
 		@apply font-light leading-8 text-left max-w-4xl;
+		p {
+			@apply mb-8;
+		}
+		code {
+			@apply mb-10;
+		}
 	}
 
 	h1,
