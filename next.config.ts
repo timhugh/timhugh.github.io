@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
 };
 
 const withMDX = createMDX({
+	extension: /\.mdx?$/,
 	options: {
 		remarkPlugins: [
 			remarkFrontmatter,
