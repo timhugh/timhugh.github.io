@@ -1,25 +1,23 @@
 import React from "react";
-import path from "path";
-import fs from "fs";
+import { getPostsMetadata, PostMetadata } from "@/posts";
 
-export default async function Page({
-	params,
-}: {
-	params: Promise<{ slug: string }>;
-}) {
+interface BlogPostProps {
+	params: Promise<PostMetadata>;
+}
+
+export default async function BlogPost({ params }: BlogPostProps) {
 	const { slug } = await params;
-	const { default: Post } = await import(`@/blog/${slug}.mdx`);
-
-	return <Post />;
+	try {
+		const Post = await import(`@/posts/${slug}.mdx`);
+		return <Post.default />;
+	} catch (error) {
+		console.error(`Error loading post "${slug}": ${error}`);
+		return <div>Error loading post</div>;
+	}
 }
 
 export async function generateStaticParams() {
-	const postsDirectory = path.join(process.cwd(), "src", "blog");
-	const fileNames = await fs.promises.readdir(postsDirectory);
-
-	return fileNames.map((fileName) => ({
-		slug: fileName.replace(/\.mdx$/, ""),
-	}));
+	return await getPostsMetadata();
 }
 
 export const dynamicParams = false;

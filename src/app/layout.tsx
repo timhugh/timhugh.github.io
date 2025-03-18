@@ -1,7 +1,8 @@
 import { Courier_Prime, Lato } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import "./global.css";
-import Header from "./header";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const viewport: Viewport = {
 	width: "device-width",
@@ -11,8 +12,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
 	title: {
 		default: "Tim Heuett",
-		template: "%s | Tim Heuett",
+		template: "Tim Heuett | %s",
 	},
+	description: "Tim Heuett's personal website",
+	metadataBase: new URL("https://timheuett.com"),
 };
 
 const lato = Lato({
@@ -31,12 +34,13 @@ export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
-}>) {
+}>): React.ReactNode {
 	return (
 		<html lang="en">
 			<body className={`${lato.variable} ${courier.variable}`}>
 				<Header />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

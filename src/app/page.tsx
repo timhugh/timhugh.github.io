@@ -1,14 +1,13 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
+import RecentPosts from "@/components/RecentPosts";
 
-export default function Home() {
+export default function About(): React.ReactNode {
 	return (
-		<main>
-			<div className="font-light text-lg leading-10 text-center">
-				<p className="pb-2">Hi, I&apos;m Tim.</p>
-				<p className="pb-2">I live in Seattle, WA.</p>
+		<main className="justify-around">
+			<div className="text-lg">
+				<p>Hi, I&apos;m Tim.</p>
+				<p>I live in Seattle, WA.</p>
 				<p>
 					I{" "}
 					<Link href="//github.com/timhugh" target="_blank">
@@ -21,6 +20,7 @@ export default function Home() {
 					.
 				</p>
 			</div>
+			<RecentPosts />
 		</main>
 	);
 }
