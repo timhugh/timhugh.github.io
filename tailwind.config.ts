@@ -21,7 +21,7 @@ export default {
 				foreground_dim_light: "#999999",
 
 				background_dark: "#111111",
-				foreground_dark: "#c9c9c9",
+				foreground_dark: "#e0e0e0",
 				foreground_dim_dark: "#999999",
 
 				code_background_light: "#f0f0f0",
@@ -37,8 +37,8 @@ export default {
 				code_red_dark: "#f87171",
 				code_orange_dark: "#f59e0b",
 				code_yellow_dark: "#fbbf24",
-				code_green_dark: "#4ade80",
-				code_blue_dark: "#61dafb",
+				code_green_dark: "#3fbf6e",
+				code_blue_dark: "#45a1d6",
 				code_purple_dark: "#c084fc",
 				code_neutral_dark: "#cccccc",
 			},

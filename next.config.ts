@@ -3,6 +3,7 @@ import createMDX from "@next/mdx";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import remarkGfm from "remark-gfm";
+import rehypePrism from "rehype-prism-plus";
 
 const nextConfig: NextConfig = {
 	output: "export",
@@ -17,6 +18,9 @@ const withMDX = createMDX({
 			remarkGfm,
 			remarkFrontmatter,
 			[remarkMdxFrontmatter, { name: "frontmatter" }],
+		],
+		rehypePlugins: [
+			rehypePrism,
 		],
 	},
 });

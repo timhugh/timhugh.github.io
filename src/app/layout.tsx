@@ -4,42 +4,43 @@ import "./global.css";
 import Header from "@/components/Header";
 
 export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1.0,
+	width: "device-width",
+	initialScale: 1.0,
+	userScalable: false,
 };
 
 export const metadata: Metadata = {
-  title: {
-    default: "Tim Heuett",
-    template: "Tim Heuett | %s",
-  },
-  description: "Tim Heuett's personal website",
-  metadataBase: new URL("https://timheuett.com"),
+	title: {
+		default: "Tim Heuett",
+		template: "Tim Heuett | %s",
+	},
+	description: "Tim Heuett's personal website",
+	metadataBase: new URL("https://timheuett.com"),
 };
 
 const lato = Lato({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-serif",
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-serif",
 });
 
 const courier = Courier_Prime({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-serif",
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-serif",
 });
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: JSX.Element;
+	children: JSX.Element;
 }>): JSX.Element {
-  return (
-    <html lang="en">
-      <body className={`${lato.variable} ${courier.variable}`}>
-        <Header />
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={`${lato.variable} ${courier.variable}`}>
+				<Header />
+				{children}
+			</body>
+		</html>
+	);
 }

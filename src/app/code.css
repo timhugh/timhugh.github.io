@@ -1,35 +1,29 @@
-.hljs {
+.code-highlight {
 	@apply block px-6 py-4 rounded-xl bg-code_background_light dark:bg-code_background_dark text-sm;
 
-	.hljs-meta {
-		@apply text-code_orange_light dark:text-code_orange_dark;
-	}
+    .token.string,
+    .token.number {
+        @apply text-code_green_light dark:text-code_green_dark;
+    }
 
-	.hljs-type {
-		@apply text-code_blue_light dark:text-code_blue_dark;
-	}
+    .token.keyword,
+    .token.selector {
+        @apply text-code_blue_light dark:text-code_blue_dark;
+    }
 
-	.hljs-title {
-		@apply text-code_yellow_light dark:text-code_yellow_dark;
-	}
+    .token.macro,
+    .token.function,
+    .token.rule,
+    .token.property {
+        @apply text-code_yellow_light dark:text-code_yellow_dark;
+    }
 
-	.hljs-params {
-		@apply text-code_neutral_light dark:text-code_neutral_dark;
-	}
+    .token.operator,
+    .token.punctuation {
+        @apply text-code_purple_light dark:text-code_purple_dark;
+    }
 
-	.hljs-built_in {
-		@apply text-code_neutral_light dark:text-code_neutral_dark;
-	}
-
-	.hljs-string {
-		@apply text-code_green_light dark:text-code_green_dark;
-	}
-
-	.hljs-keyword {
-		@apply text-code_orange_light dark:text-code_orange_dark;
-	}
-
-	.hljs-number {
-		@apply text-code_purple_light dark:text-code_purple_dark;
-	}
+    .token.class-name {
+        @apply text-code_red_light dark:text-code_red_dark;
+    }
 }

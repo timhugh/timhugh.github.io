@@ -31,9 +31,12 @@
 			}
 		}
 		ul.contains-task-list {
-			@apply ml-4 mb-8 mt-0 list-none;
+			@apply ml-0 mb-8 mt-0 list-none;
 			li > span {
 				@apply pl-4;
+			}
+			ul {
+				@apply ml-4 mb-0 mt-0 list-none;
 			}
 		}
 		ol {

@@ -1,13 +1,5 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import TimeStamp from "./TimeStamp";
-import hljs from "highlight.js";
-
-import javascript from "highlight.js/lib/languages/javascript";
-hljs.registerLanguage("javascript", javascript);
-import cpp from "highlight.js/lib/languages/cpp";
-hljs.registerLanguage("cpp", cpp);
 
 interface BlogPostProps extends React.ComponentProps<"article"> {
 	title: string;
@@ -20,10 +12,6 @@ export default function BlogPost({
 	children,
 	...props
 }: BlogPostProps) {
-	useEffect(() => {
-		hljs.initHighlighting();
-	}, []);
-
 	return (
 		<article {...props}>
 			<hgroup className="pb-10">
