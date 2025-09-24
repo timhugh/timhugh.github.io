@@ -70,6 +70,26 @@
 		@apply border-none hover:text-inherit;
 	}
 
+    .checkbox input[type="checkbox"] {
+        @apply hidden;
+    }
+
+    .checkbox input[type="checkbox"]+span {
+        @apply inline-block relative size-5 top-1 mr-2 border-2 border-foreground_light dark:border-foreground_dark rounded-md pl-0.5 pt-0.5;
+    }
+
+    .checkbox input[type="checkbox"]+span svg {
+        @apply hidden;
+    }
+
+    .checkbox input[type="checkbox"]:checked+span {
+        @apply bg-primary border-primary text-background_light dark:text-background_dark;
+    }
+
+    .checkbox input[type="checkbox"]:checked+span svg {
+        @apply block;
+    }
+
 	/*
 	 * Layout styling
 	 */
