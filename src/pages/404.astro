@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 interface Haiku {
 	content: string;
@@ -51,26 +51,40 @@ Screen. Mind. Both are blank....`,
 		source: `//www.morro-bay.com/pchelp/haiku.htm`,
 	},
 ];
+---
 
-export default function NotFound() {
-	const haiku: Haiku = haikus[Math.floor(Math.random() * haikus.length)];
+<BaseLayout title="404 Not Found">
+	<main>
+		<h1 class="mb-8 text-center font-serif text-3xl font-light">
+			404 Not Found
+		</h1>
+		<div>
+			<p
+				id="haiku-content"
+				class="mb-4 whitespace-pre-wrap text-left text-lg italic leading-8"
+			>
+				The Web site you seek
+				Cannot be located, but
+				Countless more exist.
+			</p>
+			<p class="text-right text-lg">
+				-- <a
+					id="haiku-author"
+					href="//www.morro-bay.com/pchelp/haiku.htm"
+					target="_blank">Unknown</a
+				>
+			</p>
+		</div>
+	</main>
+	<script define:vars={{ haikus }}>
+		const haiku = haikus[Math.floor(Math.random() * haikus.length)];
+		const content = document.getElementById("haiku-content");
+		const author = document.getElementById("haiku-author");
 
-	return (
-		<main>
-			<h1 className="text-3xl text-center mb-8 font-serif font-light">
-				404 Not Found
-			</h1>
-			<div>
-				<p className="text-lg text-left whitespace-pre-wrap italic mb-4 leading-8">
-					{haiku.content}
-				</p>
-				<p className="text-lg text-right">
-					--{" "}
-					<Link href={haiku.source} target="_blank">
-						{haiku.author}
-					</Link>
-				</p>
-			</div>
-		</main>
-	);
-}
+		if (content && author) {
+			content.textContent = haiku.content;
+			author.textContent = haiku.author;
+			author.setAttribute("href", haiku.source);
+		}
+	</script>
+</BaseLayout>

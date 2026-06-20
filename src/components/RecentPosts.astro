@@ -1,0 +1,25 @@
+---
+import DateStamp from "@/components/DateStamp.astro";
+import { getPostsMetadata } from "@/lib/posts";
+
+const posts = getPostsMetadata();
+---
+
+<div>
+	<h2>Recent Posts</h2>
+	<ul>
+		{
+			posts.map((post) => (
+				<li>
+					<a href={`/blog/${post.slug}/`} class="font-serif text-lg">
+						{post.title}
+					</a>
+					<DateStamp
+						date={post.date}
+						class="pl-4 text-sm text-foreground-dim-light dark:text-foreground-dim-dark"
+					/>
+				</li>
+			))
+		}
+	</ul>
+</div>

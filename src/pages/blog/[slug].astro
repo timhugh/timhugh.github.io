@@ -1,0 +1,27 @@
+---
+import BlogPost from "@/components/BlogPost.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPostDate, getPostSlug, getPosts } from "@/lib/posts";
+
+export function getStaticPaths() {
+	return getPosts().map((post) => ({
+		params: { slug: getPostSlug(post) },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+const date = getPostDate(post.frontmatter.date);
+---
+
+<BaseLayout title={post.frontmatter.title}>
+	<main class="mt-4">
+		<div class="w-full max-w-6xl pb-10 text-left">
+			<a href="/blog/">Blog</a>
+		</div>
+		<BlogPost title={post.frontmatter.title} date={date}>
+			<Content />
+		</BlogPost>
+	</main>
+</BaseLayout>
