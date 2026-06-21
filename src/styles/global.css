@@ -19,71 +19,12 @@
 }
 
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
 	body {
 		@apply h-dvh flex flex-col bg-background-light text-foreground-light dark:bg-background-dark dark:text-foreground-dark;
-	}
-
-	main {
-		@apply mx-auto my-20 flex flex-1 flex-col items-center px-4 text-center font-light leading-10;
-		width: min(100%, 80rem);
-	}
-
-	article {
-		@apply w-full max-w-4xl text-left font-light leading-8;
-	}
-
-	article p {
-		@apply mb-8;
-	}
-
-	article pre {
-		@apply mb-10 overflow-x-auto rounded-xl px-6 py-4 text-sm;
-	}
-
-	article pre.astro-code {
-		background-color: var(--color-code-background-light) !important;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		article pre.astro-code {
-			background-color: var(--color-code-background-dark) !important;
-		}
-	}
-
-	article code {
-		@apply text-wrap;
-	}
-
-	article pre code {
-		@apply text-nowrap;
-	}
-
-	article ul {
-		@apply ml-4 mb-8 mt-0 list-disc;
-	}
-
-	article ul li > span {
-		@apply pl-4;
-	}
-
-	article ul.contains-task-list {
-		@apply ml-0 mb-8 mt-0 list-none;
-	}
-
-	article ul.contains-task-list li > span {
-		@apply pl-4;
-	}
-
-	article ul.contains-task-list ul {
-		@apply ml-4 mb-0 mt-0 list-none;
-	}
-
-	article ol {
-		@apply ml-7 mb-8 mt-0 list-decimal;
-	}
-
-	article ol li > span {
-		@apply pl-2;
 	}
 
 	h1,
@@ -111,6 +52,66 @@
 
 	a.no-style {
 		@apply border-none hover:text-inherit;
+	}
+}
+
+@layer components {
+	.post {
+		@apply w-full max-w-4xl text-left font-light leading-8;
+	}
+
+	.post p {
+		@apply mb-8;
+	}
+
+	.post pre {
+		@apply mb-10 overflow-x-auto rounded-xl px-6 py-4 text-sm;
+	}
+
+	.post pre.astro-code {
+		background-color: var(--color-code-background-light) !important;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.post pre.astro-code {
+			background-color: var(--color-code-background-dark) !important;
+		}
+	}
+
+	.post code {
+		@apply text-wrap;
+	}
+
+	.post pre code {
+		@apply text-nowrap;
+	}
+
+	.post ul {
+		@apply ml-4 mb-8 mt-0 list-disc;
+	}
+
+	.post ul li > span {
+		@apply pl-4;
+	}
+
+	.post ul.contains-task-list {
+		@apply ml-0 mb-8 mt-0 list-none;
+	}
+
+	.post ul.contains-task-list li > span {
+		@apply pl-4;
+	}
+
+	.post ul.contains-task-list ul {
+		@apply ml-4 mb-0 mt-0 list-none;
+	}
+
+	.post ol {
+		@apply ml-7 mb-8 mt-0 list-decimal;
+	}
+
+	.post ol li > span {
+		@apply pl-2;
 	}
 
 	.task-list-item input[type="checkbox"] {

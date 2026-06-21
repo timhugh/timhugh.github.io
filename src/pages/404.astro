@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageFrame from "@/components/PageFrame.astro";
 
 interface Haiku {
 	content: string;
@@ -54,7 +55,7 @@ Screen. Mind. Both are blank....`,
 ---
 
 <BaseLayout title="404 Not Found">
-	<main>
+	<PageFrame>
 		<h1 class="mb-8 text-center font-serif text-3xl font-light">
 			404 Not Found
 		</h1>
@@ -75,7 +76,7 @@ Screen. Mind. Both are blank....`,
 				>
 			</p>
 		</div>
-	</main>
+	</PageFrame>
 	<script define:vars={{ haikus }}>
 		const haiku = haikus[Math.floor(Math.random() * haikus.length)];
 		const content = document.getElementById("haiku-content");

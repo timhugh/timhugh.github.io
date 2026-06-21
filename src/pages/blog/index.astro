@@ -1,10 +1,11 @@
 ---
 import RecentPosts from "@/components/RecentPosts.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageFrame from "@/components/PageFrame.astro";
 ---
 
 <BaseLayout title="recent posts">
-	<main>
+	<PageFrame>
 		<RecentPosts />
-	</main>
+	</PageFrame>
 </BaseLayout>
