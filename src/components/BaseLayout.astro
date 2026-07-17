@@ -1,22 +1,18 @@
 ---
-import Header from "@/components/Header.astro";
-import "@/styles/global.css";
+import "@/global.css";
 
 interface Props {
 	title?: string;
 	description?: string;
+  children: any,
 }
 
-const {
-	title = "Tim Heuett",
-	description = "Tim Heuett's personal website",
-} = Astro.props;
-
+const { title = "Tim Heuett", description = "Tim Heuett's personal website" } = Astro.props;
 const pageTitle = title === "Tim Heuett" ? title : `Tim Heuett | ${title}`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scrollbar-gutter-stable">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,16 +21,11 @@ const pageTitle = title === "Tim Heuett" ? title : `Tim Heuett | ${title}`;
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="icon" href="/favicon.png" type="image/png" />
 		<link rel="apple-touch-icon" href="/apple-icon.png" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Lato:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
 		<title>{pageTitle}</title>
 	</head>
-	<body>
-		<Header />
+  <body class="h-dvh
+    bg-background-light text-foreground-light
+    dark:bg-background-dark dark:text-foreground-dark">
 		<slot />
 	</body>
 </html>

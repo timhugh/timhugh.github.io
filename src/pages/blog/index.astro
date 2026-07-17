@@ -1,11 +1,13 @@
 ---
-import RecentPosts from "@/components/RecentPosts.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageFrame from "@/components/PageFrame.astro";
+import BaseLayout from "@/components/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import { getPosts } from "@/posts";
+
+const posts = (await getPosts()).published();
 ---
 
 <BaseLayout title="recent posts">
-	<PageFrame>
-		<RecentPosts />
-	</PageFrame>
+  <Header vertical />
+  <main class="centered" >
+  </main>
 </BaseLayout>

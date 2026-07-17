@@ -1,57 +1,28 @@
 ---
-interface SocialLink {
-	label: string;
-	href: string;
-	icon: string;
-}
+import { SocialLinkType } from "@/links";
+import SocialLink from "@/components/SocialLink.astro";
 
-const socialLinks: SocialLink[] = [
-	{
-		label: "GitHub Profile",
-		href: "//github.com/timhugh",
-		icon: "/github.svg",
-	},
-	{
-		label: "LinkedIn Profile",
-		href: "//linkedin.com/in/timheuett",
-		icon: "/linkedin.svg",
-	},
-	{
-		label: "Instagram Profile",
-		href: "//instagram.com/timhugh",
-		icon: "/instagram.svg",
-	},
-	{
-		label: "Email",
-		href: "mailto:info@timheuett.com",
-		icon: "/mail.svg",
-	},
-];
+interface Props {
+  vertical?: boolean;
+}
+const { vertical = false } = Astro.props as Props;
 ---
 
-<header class="pt-10 pb-10">
-	<div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-8 px-4 lg:flex-row lg:items-start">
+<header class={"pt-10 pb-10 w-full"}>
+  <div class:list={[
+    "mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-8 px-4",
+    vertical ? "" : "lg:flex-row lg:items-start"
+    ]}>
 		<div class="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-20">
-			<h1 class="text-center text-4xl">
-				<a class="no-style" href="/">Tim Heuett</a>
+			<h1 class="text-center">
+				<a href="/" aria-label="home" class="text-4xl font-sans tracking-widest lowercase text-foreground-light dark:text-foreground-dark">Tim Heuett</a>
 			</h1>
 		</div>
 		<ul class="flex list-none flex-row items-center gap-2 pt-2 md:mr-1 lg:pt-4">
-			{
-				socialLinks.map(({ label, href, icon }) => (
-					<li>
-						<a href={href} target="_blank" aria-label={label} class="no-style">
-							<div class="rounded-full bg-foreground-light p-1.5 text-background-light hover:bg-primary dark:bg-foreground-dark dark:text-background-dark dark:hover:text-background-dark">
-								<span
-									class="block h-6 w-6 bg-current lg:h-4 lg:w-4"
-									style={`mask: url("${icon}") center / contain no-repeat; -webkit-mask: url("${icon}") center / contain no-repeat;`}
-									aria-hidden="true"
-								/>
-							</div>
-						</a>
-					</li>
-				))
-			}
+      <li><SocialLink linkType={SocialLinkType.Github} /></li>
+      <li><SocialLink linkType={SocialLinkType.Linkedin} /></li>
+      <li><SocialLink linkType={SocialLinkType.Instagram} /></li>
+      <li><SocialLink linkType={SocialLinkType.Email} /></li>
 		</ul>
 	</div>
 </header>

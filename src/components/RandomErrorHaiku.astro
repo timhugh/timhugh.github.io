@@ -1,0 +1,13 @@
+---
+import { type Haiku, Haikus } from "@/haikus";
+
+const haiku: Haiku = Haikus[Math.floor(Math.random() * Haikus.length)];
+const props = Astro.props;
+---
+
+<article {...props}>
+  <p class="mb-8 whitespace-pre-wrap text-left italic leading-8">{haiku.content}</p>
+  <p class="text-right">
+    -- <a target="_blank" href={haiku.source ? haiku.source : ""}>{haiku.author}</a>
+  </p>
+</article>

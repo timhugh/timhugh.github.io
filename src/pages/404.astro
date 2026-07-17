@@ -1,91 +1,19 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageFrame from "@/components/PageFrame.astro";
-
-interface Haiku {
-	content: string;
-	author: string;
-	source: string;
-}
-
-const haikus: Haiku[] = [
-	{
-		content: `The Web site you seek
-Cannot be located, but
-Countless more exist.`,
-		author: "Unknown",
-		source: `//www.morro-bay.com/pchelp/haiku.htm`,
-	},
-	{
-		content: `Chaos reigns within.
-Reflect, repent, and reboot.
-Order shall return.`,
-		author: "Suzie Wagner",
-		source: `//www.morro-bay.com/pchelp/haiku.htm`,
-	},
-	{
-		content: `Three things are certain:
-Death, taxes and lost data.
-Guess which has occurred.`,
-		author: "Unknown",
-		source: `//www.morro-bay.com/pchelp/haiku.htm`,
-	},
-	{
-		content: `You step in the stream,
-But the water has moved on.
-This page is not here.`,
-		author: "Unknown",
-		source: `//www.morro-bay.com/pchelp/haiku.htm`,
-	},
-	{
-		content: `Having been erased,
-The document you're seeking
-Must now be retyped.`,
-		author: "Unknown",
-		source: `//www.morro-bay.com/pchelp/haiku.htm`,
-	},
-	{
-		content: `Serious error.
-All shortcuts have disappeared.
-Screen. Mind. Both are blank....`,
-		author: "Unknown",
-		source: `//www.morro-bay.com/pchelp/haiku.htm`,
-	},
-];
+import Header from "@/components/Header.astro";
+import BaseLayout from "@/components/BaseLayout.astro";
+import RandomErrorHaiku from "@/components/RandomErrorHaiku.astro";
 ---
 
 <BaseLayout title="404 Not Found">
-	<PageFrame>
-		<h1 class="mb-8 text-center font-serif text-3xl font-light">
-			404 Not Found
-		</h1>
-		<div>
-			<p
-				id="haiku-content"
-				class="mb-4 whitespace-pre-wrap text-left text-lg italic leading-8"
-			>
-				The Web site you seek
-				Cannot be located, but
-				Countless more exist.
-			</p>
-			<p class="text-right text-lg">
-				-- <a
-					id="haiku-author"
-					href="//www.morro-bay.com/pchelp/haiku.htm"
-					target="_blank">Unknown</a
-				>
-			</p>
-		</div>
-	</PageFrame>
-	<script define:vars={{ haikus }}>
-		const haiku = haikus[Math.floor(Math.random() * haikus.length)];
-		const content = document.getElementById("haiku-content");
-		const author = document.getElementById("haiku-author");
-
-		if (content && author) {
-			content.textContent = haiku.content;
-			author.textContent = haiku.author;
-			author.setAttribute("href", haiku.source);
-		}
-	</script>
+  <Header />
+  <main>
+    <section class="mt-30 font-mono">
+      <h2 class="mb-4 text-3xl lowercase text-center">Page not found</h2>
+      <p class="text-center mb-2">The page you are looking for doesn't exist.</p>
+      <p class="text-center mb-16">Please enjoy this haiku:</p>
+      <div class="text-center">
+        <RandomErrorHaiku client:load class="inline-block"/>
+      </div>
+    </section>
+  </main>
 </BaseLayout>

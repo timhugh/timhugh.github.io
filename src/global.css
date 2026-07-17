@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #84c66f;
+
+  --color-background-light: #ffffff;
+  --color-foreground-light: #333333;
+  --color-foreground-dim-light: #999999;
+
+  --color-background-dark: #111111;
+  --color-foreground-dark: #e0e0e0;
+  --color-foreground-dim-dark: #999999;
+
+  --color-code-background-light: #f0f0f0;
+  --color-code-background-dark: #1d1d1d;
+
+  --font-sans: "Verdana", sans-serif;
+  /* --font-serif: "Georgia", serif; */
+  /* --font-mono: "Courier New", monospace; */
+}

@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { type SocialLinkType, SocialLinks } from "@/links";
+
+interface Props extends HTMLAttributes<"a"> {
+  linkType: SocialLinkType;
+}
+const { linkType, ...props } = Astro.props as Props;
+const link = SocialLinks[linkType];
+---
+
+<a
+  target="_blank"
+  href={link.url}
+  aria-label={link.label}
+  class:list={[
+    "block rounded-full p-1.5 bg-primary outline-offset-4",
+    "hover:bg-foreground-light text-background-light",
+    "dark:text-background-dark dark:hover:bg-foreground-dark",
+    props.class,
+  ]}
+  {...props}
+>
+  <span
+    class="block h-6 w-6 bg-current"
+    style={`mask: url("${link.icon}") center / contain no-repeat; -webkit-mask: url("${link.icon}") center / contain no-repeat;`}
+    aria-hidden="true"></span>
+</a>

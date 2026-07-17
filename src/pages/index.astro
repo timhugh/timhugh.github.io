@@ -1,17 +1,39 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageFrame from "@/components/PageFrame.astro";
+import BaseLayout from "@/components/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import PostList from "@/components/PostList.astro";
+
+import { getPosts } from "@/posts";
+const recentPosts = (await getPosts()).published().limit(5);
+
+const introLinkProps = {
+  rel: "external",
+  tabindex: "-1",
+  class: "underline underline-offset-6 hover:text-primary",
+};
 ---
 
 <BaseLayout>
-	<PageFrame class="justify-around">
-		<div class="text-lg">
-			<p>Hi, I'm Tim.</p>
-			<p>I live in Seattle, WA.</p>
-			<p>
-				I <a href="//github.com/timhugh" target="_blank">write software</a> and
-				<a href="//instagram.com/timhugh" target="_blank">take photos</a>.
-			</p>
-		</div>
-	</PageFrame>
+  <Header vertical />
+  <main class="mx-auto w-full max-w-3xl">
+    <section class="mt-20 text-center font-mono">
+      <p class="mb-4">Hi, I'm Tim.</p>
+      <p class="mb-4">I live in Seattle, WA.</p>
+      <p class="mb-4">
+        I <a href="https://github.com/timhugh" {...introLinkProps}>write software</a> and
+        <a href="https://instagram.com/timhugh" {...introLinkProps}>take photos</a>.
+      </p>
+    </section>
+    {
+      recentPosts.length > 0 && (
+        <section class="mt-30 font-mono">
+          <h2 class="mb-8 text-3xl lowercase text-center">Recent Blog Posts</h2>
+          <PostList class="mb-12" posts={recentPosts} />
+          <div class="text-center">
+            <a href="/blog">More posts</a>
+          </div>
+        </section>
+      )
+    }
+  </main>
 </BaseLayout>

@@ -1,25 +1,32 @@
 ---
-import BlogPost from "@/components/BlogPost.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import PageFrame from "@/components/PageFrame.astro";
-import { getPostDate, getPostSlug, getPosts } from "@/lib/posts";
+import BaseLayout from "@/components/BaseLayout.astro";
+import Header from "@/components/Header.astro";
+import RelativeDate from "@/components/RelativeDate.astro";
+import { getPosts } from "@/posts";
 
-export function getStaticPaths() {
-	return getPosts().map((post) => ({
-		params: { slug: getPostSlug(post) },
-		props: { post },
-	}));
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;
-const { Content } = post;
-const date = getPostDate(post.frontmatter.date);
+const { content } = post;
 ---
 
-<BaseLayout title={post.frontmatter.title}>
-	<PageFrame spacing="compact">
-		<BlogPost title={post.frontmatter.title} date={date}>
-			<Content />
-		</BlogPost>
-	</PageFrame>
+<BaseLayout title={post.title}>
+  <Header />
+  <main>
+    <article class="post">
+      <hgroup class="pb-10">
+        <h2>{post.title}</h2>
+        <RelativeDate
+          date={post.date}
+          class="text-foreground-dim-light dark:text-foreground-dim-dark"
+        />
+        <div set:html={content} />
+      </hgroup>
+    </article>
+  </main>
 </BaseLayout>
