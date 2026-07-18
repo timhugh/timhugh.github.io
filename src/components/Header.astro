@@ -2,27 +2,24 @@
 import { SocialLinkType } from "@/links";
 import SocialLink from "@/components/SocialLink.astro";
 
-interface Props {
-  vertical?: boolean;
-}
-const { vertical = false } = Astro.props as Props;
+const props = Astro.props;
 ---
 
-<header class={"pt-10 pb-10 w-full"}>
-  <div class:list={[
-    "mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-8 px-4",
-    vertical ? "" : "lg:flex-row lg:items-start"
-    ]}>
-		<div class="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-20">
-			<h1 class="text-center">
-				<a href="/" aria-label="home" class="text-4xl font-sans tracking-widest lowercase text-foreground-light dark:text-foreground-dark">Tim Heuett</a>
-			</h1>
-		</div>
-		<ul class="flex list-none flex-row items-center gap-2 pt-2 md:mr-1 lg:pt-4">
+<header class:list={["pt-10 w-full mb-30", props.class]}>
+  <div class="mx-auto w-full max-w-6xl">
+    <h1 class="text-center mb-8">
+      <a
+        href="/"
+        aria-label="home"
+        class="text-4xl font-sans tracking-widest lowercase text-foreground-light dark:text-foreground-dark"
+        >Tim Heuett</a
+      >
+    </h1>
+    <ul class="flex flex-row gap-2 justify-center">
       <li><SocialLink linkType={SocialLinkType.Github} /></li>
       <li><SocialLink linkType={SocialLinkType.Linkedin} /></li>
       <li><SocialLink linkType={SocialLinkType.Instagram} /></li>
       <li><SocialLink linkType={SocialLinkType.Email} /></li>
-		</ul>
-	</div>
+    </ul>
+  </div>
 </header>

@@ -5,10 +5,13 @@ import { getPosts, type Post } from "@/blog";
 import PostList from "@/components/PostList.astro";
 
 const posts = (await getPosts()).published().sort().groupByMonth();
+if (posts.length === 0) {
+  return Astro.redirect("/404");
+}
 ---
 
 <BaseLayout title="Blog">
-  <Header vertical />
+  <Header />
   <main class="mx-auto w-full max-w-3xl">
     {
       posts.map(([month, posts]) => (

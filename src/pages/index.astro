@@ -14,9 +14,9 @@ const introLinkProps = {
 ---
 
 <BaseLayout>
-  <Header vertical />
+  <Header />
   <main class="mx-auto w-full max-w-3xl">
-    <section class="mt-20 text-center font-mono">
+    <section class="mb-30 text-center font-mono">
       <p class="mb-4">Hi, I'm Tim.</p>
       <p class="mb-4">I live in Seattle, WA.</p>
       <p class="mb-4">
@@ -30,12 +30,15 @@ const introLinkProps = {
     </section>
     {
       recentPosts.length > 0 && (
-        <section class="mt-30 font-mono">
+        <section class="font-mono">
           <PostList class="mb-12" posts={recentPosts} />
           <div class="text-center">
-            <a class="hover:underline" href="/blog">
-              read more &gt;
-            </a>
+            <div class="block mb-4">
+              <a class="hover:underline underline-offset-8" href="/blog">
+                read more
+              </a>{" "}
+              &gt;
+            </div>
           </div>
         </section>
       )

@@ -4,10 +4,12 @@
   --color-primary: #84c66f;
 
   --color-background-light: #ffffff;
+  --color-background-dim-light: #f5f5f5;
   --color-foreground-light: #333333;
   --color-foreground-dim-light: #999999;
 
   --color-background-dark: #111111;
+  --color-background-dim-dark: #1a1a1a;
   --color-foreground-dark: #e0e0e0;
   --color-foreground-dim-dark: #999999;
 

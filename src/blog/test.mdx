@@ -3,6 +3,9 @@ title: Formatting test post
 date: 2025-03-17T18:00:00-07:00
 ---
 
+import { Image } from "astro:assets";
+import CheckListItem from "@/components/CheckListItem.astro";
+
 I need to fill this in with some longer form content to get an idea of what it looks like. This stylesheet is getting close to being done (maybe), but there are still some text spacing things, etc. I also haven't done anything with mdx-components yet, and I suspect that will come up eventually.
 
 It's bothering me that hljs parses code on the frontend. I really feel like I should be able to get something set up to parse it on build so it's just part of the static output.
@@ -46,7 +49,12 @@ Here's some css (I don't have that parser set up, so idk what hljs is going to d
 
 Here's an image:
 
-![Alt text](/test/screenshot.png)
+<Image
+	src="/test/screenshot.png"
+	alt="An example screenshot of this post being written in my editor"
+	width={672}
+	height={821}
+/>
 
 I forgot to test some more formatting stuff in the paragraphs like _italicized text_ and **bold text** and ~~strikethrough text~~ and _**bold italicized text**_
 
@@ -68,12 +76,12 @@ Here's a numbered list:
 
 While I'm testing this, let's make a running todo list:
 
-- [x] Code syntax highlighting
-- [x] Constrain articles to a max width
-- [x] Finalize paragraph styling
-- - [x] Looks like strikethrough text isn't coming through
-- [x] Style lists
-- [x] Also style this checklist because this ain't it
-- [x] Code overflows code blocks on small screen sizes. Fix that
-- [x] It looks like we're not _exactly_ parsing markdown checklists, maybe we need to find a github-flavor parser
-- [ ] Delete all of this fake content and publish the first real post
+<CheckListItem checked>Code syntax highlighting</CheckListItem>
+<CheckListItem checked>Constrain articles to a max width</CheckListItem>
+<CheckListItem checked>Finalize paragraph styling</CheckListItem>
+<CheckListItem checked>Looks like strikethrough text isn't coming through</CheckListItem>
+<CheckListItem checked>Style lists</CheckListItem>
+<CheckListItem checked>Also style this checklist because this ain't it</CheckListItem>
+<CheckListItem checked>Code overflows code blocks on small screen sizes. Fix that</CheckListItem>
+<CheckListItem checked>It looks like we're not _exactly_ parsing markdown checklists, maybe we need to find a github-flavor parser</CheckListItem>
+<CheckListItem>Delete all of this fake content and publish the first real post</CheckListItem>

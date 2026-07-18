@@ -1,0 +1,13 @@
+---
+import type { HTMLAttributes } from "astro/types";
+export interface Props extends HTMLAttributes<"ul"> {
+  className?: string;
+  children: any;
+}
+const { className, ...props }: Props = Astro.props;
+const isTaskList = className?.includes("contains-task-list");
+---
+
+<ul class:list={[isTaskList ? "" : "list-disc", className]} {...props}>
+  <slot />
+</ul>

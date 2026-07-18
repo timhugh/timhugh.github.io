@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+export interface Props extends HTMLAttributes<"li"> {
+  className: string;
+  children: any;
+}
+const { className, children, ...props } = Astro.props;
+const isTask = className?.includes("task-list-item");
+---
+
+{
+  isTask ? (
+    <li class:list={["mb-6 mt-6 flex flex-row", className]} {...props}>
+      <slot />
+    </li>
+  ) : (
+    <li class:list={["ml-4 pl-2 mb-4 mt-4", className]} {...props}>
+      <slot />
+    </li>
+  )
+}
