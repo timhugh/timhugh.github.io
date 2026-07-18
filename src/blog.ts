@@ -9,47 +9,43 @@ export interface Post {
   title: string;
   date: Date;
   slug: string;
-  draft: boolean;
+  published: boolean;
   content: RenderResult;
 }
 
-export class Posts {
-  private promise: Promise<Post[]>;
+export async function getPosts(): Promise<Posts> {
+  const postData = await getCollection("blog").then((postData) =>
+    Promise.all(
+      postData.map(async (post): Promise<Post> => ({
+        slug: post.id,
+        title: post.data.title,
+        date: post.data.date,
+        published: post.data.published,
+        content: await render(post),
+      })),
+    ),
+  );
+  return new Posts(...postData);
+}
 
-  constructor() {
-    this.promise = getCollection("blog").then((postData) =>
-      Promise.all(
-        postData.map(async (post): Promise<Post> => ({
-          slug: post.id,
-          title: post.data.title,
-          date: post.data.date,
-          draft: post.data.draft,
-          content: await render(post),
-        })),
-      ),
-    );
-  }
-
+export class Posts extends Array<Post> {
   published() {
-    this.promise.then((posts) => posts.filter((post) => !post.draft));
-    return this;
+    return new Posts(...this.filter((post) => post.published));
   }
 
-  sort(sortOrder: SortOrder = SortOrder.Descending) {
+  sortByDate(sortOrder: SortOrder = SortOrder.Descending) {
     const sortFunc =
       sortOrder === SortOrder.Ascending
         ? (a: Post, b: Post) => a.date.getTime() - b.date.getTime()
         : (a: Post, b: Post) => b.date.getTime() - a.date.getTime();
-    this.promise.then((posts) => posts.sort(sortFunc));
-    return this;
+    return new Posts(...this.sort(sortFunc));
   }
 
-  limit(numPosts: number) {
-    this.promise.then((posts) => posts.slice(0, numPosts));
-    return this;
-  }
-
-  async load(): Promise<Post[]> {
-    return this.promise;
+  groupByMonth() {
+    return Object.entries(
+      Object.groupBy(this, (post) =>
+        post.date.toLocaleString("default", { month: "long", year: "numeric" }),
+      ) as Record<string, Post[]>,
+    );
   }
 }

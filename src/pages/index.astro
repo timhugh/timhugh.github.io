@@ -2,9 +2,9 @@
 import BaseLayout from "@/components/BaseLayout.astro";
 import Header from "@/components/Header.astro";
 import PostList from "@/components/PostList.astro";
-import { Posts } from "@/blog";
+import { getPosts } from "@/blog";
 
-const recentPosts = await new Posts().published().sort().limit(5).load();
+const recentPosts = (await getPosts()).published().sortByDate();
 
 const introLinkProps = {
   rel: "external",
@@ -34,7 +34,7 @@ const introLinkProps = {
           <PostList class="mb-12" posts={recentPosts} />
           <div class="text-center">
             <a class="hover:underline" href="/blog">
-              read more >
+              read more &gt;
             </a>
           </div>
         </section>
