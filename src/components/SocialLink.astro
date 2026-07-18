@@ -7,6 +7,7 @@ interface Props extends HTMLAttributes<"a"> {
 }
 const { linkType, ...props } = Astro.props as Props;
 const link = SocialLinks[linkType];
+const { icon: Icon } = link;
 ---
 
 <a
@@ -21,7 +22,5 @@ const link = SocialLinks[linkType];
   ]}
   {...props}
 >
-  <span
-    class={`block h-6 w-6 bg-current mask-[url(${link.icon})] mask-no-repeat mask-center mask-contain`}
-    aria-hidden="true"></span>
+  <Icon />
 </a>

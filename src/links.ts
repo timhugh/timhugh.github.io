@@ -1,3 +1,10 @@
+import type { SvgComponent } from "astro/types";
+
+import GithubIcon from "@/assets/github.svg";
+import LinkedinIcon from "@/assets/linkedin.svg";
+import InstagramIcon from "@/assets/instagram.svg";
+import MailIcon from "@/assets/mail.svg";
+
 export enum SocialLinkType {
   Github = "Github",
   Linkedin = "Linkedin",
@@ -7,29 +14,29 @@ export enum SocialLinkType {
 
 export interface SocialLink {
   url: string;
-  icon: string;
   label: string;
+  icon: SvgComponent;
 }
 
 export const SocialLinks: Record<SocialLinkType, SocialLink> = {
   [SocialLinkType.Github]: {
     url: "https://github.com/timhugh",
-    icon: "/github.svg",
     label: "GitHub",
+    icon: GithubIcon,
   },
   [SocialLinkType.Linkedin]: {
     url: "https://linkedin.com/in/timheuett/",
-    icon: "/linkedin.svg",
     label: "LinkedIn",
+    icon: LinkedinIcon,
   },
   [SocialLinkType.Instagram]: {
     url: "https://instagram.com/timheuett/",
-    icon: "/instagram.svg",
     label: "Instagram",
+    icon: InstagramIcon,
   },
   [SocialLinkType.Email]: {
     url: "mailto:me@timheuett.com",
-    icon: "/mail.svg",
     label: "Email",
+    icon: MailIcon,
   },
 };
