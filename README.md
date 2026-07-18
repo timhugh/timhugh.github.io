@@ -1,9 +1,6 @@
 # [timheuett.com](https://timheuett.com)
 
-Built using:
-- Astro
-- Tailwindcss
-- Remark
+Built using Astro and Tailwind CSS
 
 Deployed on Github Pages
 
