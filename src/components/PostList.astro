@@ -1,10 +1,10 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import type { Posts } from "@/posts";
+import type { Post } from "@/blog";
 import RelativeDate from "@/components/RelativeDate.astro";
 
 interface Props extends HTMLAttributes<"ul"> {
-  posts: Posts;
+  posts: Post[];
 }
 const { posts, ...props } = Astro.props as Props;
 ---
@@ -14,7 +14,9 @@ const { posts, ...props } = Astro.props as Props;
     posts.map((post) => (
       <li class="flex flex-row mb-2">
         <div class="mr-4 flex-3 text-right">
-          <a class="hover:underline" href={`/blog/${post.slug}`}>{post.title}</a>
+          <a class="hover:underline" href={`/blog/${post.slug}`}>
+            {post.title}
+          </a>
         </div>
         <div class="flex-2 text-left text-foreground-dim-light dark:text-foreground-dim-dark">
           <RelativeDate date={post.date} />

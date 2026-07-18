@@ -2,9 +2,9 @@
 import BaseLayout from "@/components/BaseLayout.astro";
 import Header from "@/components/Header.astro";
 import PostList from "@/components/PostList.astro";
+import { Posts } from "@/blog";
 
-import { getPosts } from "@/posts";
-const recentPosts = (await getPosts()).published().limit(5);
+const recentPosts = await new Posts().published().sort().limit(5).load();
 
 const introLinkProps = {
   rel: "external",
@@ -20,8 +20,12 @@ const introLinkProps = {
       <p class="mb-4">Hi, I'm Tim.</p>
       <p class="mb-4">I live in Seattle, WA.</p>
       <p class="mb-4">
-        I <a href="https://github.com/timhugh" {...introLinkProps}>write software</a> and
-        <a href="https://instagram.com/timhugh" {...introLinkProps}>take photos</a>.
+        I <a href="https://github.com/timhugh" {...introLinkProps}
+          >write software</a
+        > and{" "}
+        <a href="https://instagram.com/timhugh" {...introLinkProps}
+          >take photos</a
+        >.
       </p>
     </section>
     {
@@ -30,7 +34,9 @@ const introLinkProps = {
           <h2 class="mb-8 text-3xl lowercase text-center">Recent Blog Posts</h2>
           <PostList class="mb-12" posts={recentPosts} />
           <div class="text-center">
-            <a href="/blog">More posts</a>
+            <a class="hover:underline" href="/blog">
+              More posts
+            </a>
           </div>
         </section>
       )
