@@ -14,7 +14,7 @@ const { posts, ...props } = Astro.props as Props;
     posts.map((post) => (
       <li class="flex flex-row mb-2">
         <div class="mr-4 flex-3 text-right">
-          <a class="hover:underline" href={`/blog/${post.slug}`}>
+          <a class="hover:underline lowercase" href={`/blog/${post.slug}`}>
             {post.title}
           </a>
         </div>
