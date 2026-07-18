@@ -6,24 +6,33 @@ interface Props extends HTMLAttributes<"time"> {
 }
 
 const { date, ...props } = Astro.props as Props;
-
-function formatDate(date: Date): string {
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  const days = Math.floor(diffInSeconds / 86400);
-  if (days < 1) {
-    return "Today";
-  } else if (days < 30) {
-    return `${days} day${days !== 1 ? "s" : ""} ago`;
-  }
-
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
-}
+const epochDate = date.getTime();
+const id = Math.random().toString(36);
 ---
 
-<time datetime={date.toISOString()} {...props}>{formatDate(date)}</time>
+<time id={`relative-time-${id}`} {...props}></time>
+
+<script is:inline define:vars={{ epochDate, id }}>
+  const date = new Date(epochDate);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+  const days = Math.floor(diffInSeconds / 86400);
+  const timeElement = document.getElementById(`relative-time-${id}`);
+
+  var dateString;
+
+  if (days < 1) {
+    dateString = "Today";
+  } else if (days < 30) {
+    dateString = `${days} day${days !== 1 ? "s" : ""} ago`;
+  } else {
+    dateString = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  }
+
+  timeElement.setAttribute("datetime", date.toISOString());
+  timeElement.textContent = dateString;
+</script>
