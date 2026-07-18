@@ -3,23 +3,25 @@ import BaseLayout from "@/components/BaseLayout.astro";
 import Header from "@/components/Header.astro";
 import { getPosts, type Post } from "@/blog";
 import PostList from "@/components/PostList.astro";
+import Error404 from "@/pages/404.astro";
 
 const posts = (await getPosts()).published().sort().groupByMonth();
-if (posts.length === 0) {
-  return Astro.redirect("/404");
-}
 ---
 
-<BaseLayout title="Blog">
-  <Header />
-  <main class="mx-auto w-full max-w-3xl">
-    {
-      posts.map(([month, posts]) => (
-        <section class="mt-20 text-center font-mono">
-          <h2 class="mb-8 text-3xl lowercase text-center">{month}</h2>
-          <PostList posts={posts} />
-        </section>
-      ))
-    }
-  </main>
-</BaseLayout>
+{
+  posts.length > 0 ? (
+    <BaseLayout title="Blog">
+      <Header />
+      <main class="mx-auto w-full max-w-3xl">
+        {posts.map(([month, posts]) => (
+          <section class="mt-20 text-center font-mono">
+            <h2 class="mb-8 text-3xl lowercase text-center">{month}</h2>
+            <PostList posts={posts} />
+          </section>
+        ))}
+      </main>
+    </BaseLayout>
+  ) : (
+    <Error404 />
+  )
+}
